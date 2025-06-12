@@ -189,12 +189,13 @@ export default {
             }
           ],
           tooltipRules: [
-            'Nearly perfect: Structure and connections match exactly. Only minor differences allowed (colors/fonts/line styles, horizontal/vertical layout changes, element repositioning). Text content is fully accurate.',
+            'Complete failure: Fundamental errors: (1) Different diagram type (e.g., flowchart → sequence diagram), (2) Structure/elements/connections all mismatch, (3) Fails to convey original intent.',
             'Severe distortion: Overall structure mismatches (<30% similarity). Includes one or more of: many missing/incorrect elements, broken key connections/logic, or severely mismatched text.',
             'Moderate errors: Core structure is mostly preserved, but has one or more of: multiple text errors/omissions, 1-2 missing/redundant key nodes, or 2-3 incorrect connection lines.',
             'Minor errors: Core structure and connections are correct, but has one of: 1-2 text errors/omissions, noticeable layout changes (e.g., reversed branch directions), or secondary element shape differences (e.g., square → rounded box).',
-            'Complete failure: Fundamental errors: (1) Different diagram type (e.g., flowchart → sequence diagram), (2) Structure/elements/connections all mismatch, (3) Fails to convey original intent.'
+            'Nearly perfect: Structure and connections match exactly. Only minor differences allowed (colors/fonts/line styles, horizontal/vertical layout changes, element repositioning). Text content is fully accurate.'
           ]
+
         },
         zh: {
           title: '图像相似度评分系统',
