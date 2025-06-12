@@ -37,7 +37,7 @@
         </div>
         <div class="score-buttons">
           <button 
-            v-for="score in 10" 
+            v-for="score in 5" 
             :key="score"
             @click="selectScore(score)"
             class="score-btn"
@@ -143,28 +143,24 @@ export default {
           description: 'Description',
           rules: [
             {
-              score: '10',
-              description: 'Almost completely identical, with only very minor differences (such as color/font)'
+              score: '5 points',
+              description: 'Nearly perfect: Structure and connections match exactly. Only minor differences allowed (colors/fonts/line styles, horizontal/vertical layout changes, element repositioning). Text content is fully accurate.'
             },
             {
-              score: '9',
-              description: 'All major structures and semantics are consistent, layout arrangement may be different (horizontal layout becomes vertical layout, elements originally on the left go to the right.)'
+              score: '4 points',
+              description: 'Minor errors: Core structure and connections are correct, but has one of: 1-2 text errors/omissions, noticeable layout changes (e.g., reversed branch directions), or secondary element shape differences (e.g., square → rounded box).'
             },
             {
-              score: '7-8',
-              description: 'The structure (boxes, connection relationships) are all there, but the content in the structure, such as text, is missing or incorrect.'
+              score: '3 points',
+              description: 'Moderate errors: Core structure is mostly preserved, but has one or more of: multiple text errors/omissions, 1-2 missing/redundant key nodes, or 2-3 incorrect connection lines.'
             },
             {
-              score: '5-6',
-              description: 'There are many errors or omissions in the image, such as missing structures (boxes), missing or confused connection relationships'
+              score: '2 points',
+              description: 'Severe distortion: Overall structure mismatches (<30% similarity). Includes one or more of: many missing/incorrect elements, broken key connections/logic, or severely mismatched text.'
             },
             {
-              score: '3-4',
-              description: 'The image and the original image look inconsistent in overall structure, with only some similar elements (such as boxes)'
-            },
-            {
-              score: '1-2',
-              description: 'The image has serious errors and is obviously not the same type of image at first glance. Or even if it is the same type of image, the structure, text content, and connection relationships are very mismatched.'
+              score: '1 point',
+              description: 'Complete failure: Fundamental errors: (1) Different diagram type (e.g., flowchart → sequence diagram), (2) Structure/elements/connections all mismatch, (3) Fails to convey original intent.'
             }
           ]
         },
@@ -185,28 +181,24 @@ export default {
           description: '说明',
           rules: [
             {
-              score: '10分',
-              description: '几乎完全一致，只有非常细微的差异（比如颜色/字体）'
+              score: '5分',
+              description: '几乎完美：结构和连接关系完全一致，仅允许细微差异（颜色/字体/线条样式、水平垂直布局变化、元素位置平移）。文本内容无错误。'
             },
             {
-              score: '9分',
-              description: '所有主要结构和语义一致，布局排布可能不一样（水平布局变成垂直布局、元素本来在左边去了右边。）'
+              score: '4分',
+              description: '少量错误：核心结构和连接关系正确，但存在以下一种情况：1-2处文本错误/缺失、局部布局明显变化（如分支方向反转）、次要元素形状差异（方框变圆角框）。'
             },
             {
-              score: '7~8分',
-              description: '结构（框，连接关系）都在，但是结构中的内容，比如文本有缺失，错误。'
+              score: '3分',
+              description: '中等错误：核心结构大致保留，但存在以下一种以上问题：多处文本错误/缺失、缺失或冗余1-2个关键节点、2-3条连接线指向错误。'
             },
             {
-              score: '5~6分',
-              description: '图中出现较多错误或遗漏，比如结构（框）有缺失、连接关系缺少或混乱'
+              score: '2分',
+              description: '严重失真：整体结构不一致（相似度<30%），存在以下一种以上问题：大量元素缺失/错误、关键连接关系断裂或逻辑颠倒、文本内容严重不符。'
             },
             {
-              score: '3~4分',
-              description: '图像和原图看上去整体结构不一致，只有部分元素类似（比如框）'
-            },
-            {
-              score: '1~2分',
-              description: '图像严重错误，一眼看上去就不是一个类型的图。或者就算是一个类型的图，结构、文本内容、连接关系很不匹配。'
+              score: '1分',
+              description: '完全失效：根本性错误：(1) 生成图与原图类型不同（如流程图变时序图） (2) 结构/元素/连接关系均不匹配 (3) 无法表达原始意图。'
             }
           ]
         }
@@ -233,6 +225,7 @@ export default {
       this.selectedScore = null; // 重置选中的分数
       try {
         const response = await axios.get(`${this.apiUrl}/api/image-pair`);
+        console.log(response.data)
         this.imagePair = response.data;
         console.log('New image pair loaded:', this.imagePair);
       } catch (error) {
@@ -540,37 +533,31 @@ export default {
             transform: scale(1.1);
         }
 
-        /* 1分 - 深绿色 */
+        /* 深绿色 */
         .score-btn:nth-child(1) {
             background: linear-gradient(to right, #a0c15a, #8fb048);
         }
 
-        /* 2分 - 浅绿色 */
-        .score-btn:nth-child(2) {
-            background: linear-gradient(to right, #add633, #9bc429);
-        }
+        
 
-        /* 3.4分 - 黄色 */
-        .score-btn:nth-child(3),
-        .score-btn:nth-child(4) {
+        /* 黄色 */
+        .score-btn:nth-child(2){
             background: linear-gradient(to right, #ffd934, #f0c929);
         }
 
-        /* 5-6分 - 橙色 */
-        .score-btn:nth-child(5),
-        .score-btn:nth-child(6) {
+         /* 黄色 */
+        .score-btn:nth-child(4){
+            background: linear-gradient(to right, #ef8282, #f36262);
+        }
+
+        /* 橙色 */
+        .score-btn:nth-child(3) {
             background: linear-gradient(to right, #ffb234, #f0a029);
         }
 
-        /* 7.8分 - 浅红色 */
-        .score-btn:nth-child(7),
-        .score-btn:nth-child(8) {
-            background: linear-gradient(to right, #ff8c5a, #f07a48);
-        }
 
-        /* 9.10分 - 深红色 */
-        .score-btn:nth-child(9),
-        .score-btn:nth-child(10) {
+        /* 深红色 */
+        .score-btn:nth-child(5) {
             background: linear-gradient(to right, #ff4444, #e63939);
         }
 
