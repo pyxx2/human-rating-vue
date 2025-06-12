@@ -116,7 +116,7 @@ export default {
       imagePair: null,
       loading: false,
       submitting: false,
-      apiUrl: 'http://localhost:8000',
+      apiUrl: 'https://mermaid.dbgroupswufe.org',
       showEvaluationRules: false,
       currentLanguage: 'en',
       isReRatingMode: false, // 是否处于重新评分模式
