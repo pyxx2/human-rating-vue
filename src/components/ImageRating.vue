@@ -135,7 +135,7 @@ export default {
       loading: false,
       submitting: false,
       //apiUrl: 'https://mermaid.dbgroupswufe.org',
-      apiUrl: 'https://134.175.84.16',
+      apiUrl: 'https://ppyxx.xin',
       showEvaluationRules: false,
       currentLanguage: 'en',
       isReRatingMode: false,
