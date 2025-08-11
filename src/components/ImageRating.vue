@@ -134,7 +134,8 @@ export default {
       imagePair: null,
       loading: false,
       submitting: false,
-      apiUrl: 'https://mermaid.dbgroupswufe.org',
+      //apiUrl: 'https://mermaid.dbgroupswufe.org',
+      apiUrl: 'http://localhost:8000',
       showEvaluationRules: false,
       currentLanguage: 'en',
       isReRatingMode: false,
@@ -365,6 +366,7 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
 
 body, html {
@@ -382,6 +384,7 @@ body, html {
   font-family: 'Ubuntu', 'DejaVu Sans', 'Liberation Sans', 'Noto Sans', sans-serif;
   background-size: cover;
   background-position: center;
+  background-image: url('/src/assets/bg.JPG'); 
 }
 
 .header-container {
